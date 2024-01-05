@@ -1,0 +1,22 @@
+@use "../../../scss/mixings" as m;
+.img {
+  width: 100%;
+  object-fit: cover;
+}
+.info {
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  @include m.mediumEspecifico {
+    flex-flow: column nowrap;
+  }
+  &__title {
+    color: #673ab7 !important;
+  }
+  &__card {
+    width: 100%;
+    max-width: 30rem;
+  }
+}
