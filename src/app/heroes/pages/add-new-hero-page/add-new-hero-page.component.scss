@@ -1,0 +1,37 @@
+@use '../../../scss/mixings' as m;
+.añadir{
+    display: flex;
+    padding: 1rem;
+    gap: 1rem;
+    // align-items: center;
+    justify-content: center;
+    @include m.medium{
+        flex-flow: column nowrap;
+    }
+    &__container{
+
+    }
+    &__subcontainer{
+
+    }
+    &__container--subcontainer{
+
+    }
+    &__form{
+        // display: flex;
+        // flex-flow: row wrap;
+        // gap: 1rem;
+        display: grid;
+        grid-template-columns: repeat(1 1fr);
+    }
+    &__btns--container{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+    }
+    &__form--fields{
+        display: flex;
+        gap: 1rem;
+    }
+}

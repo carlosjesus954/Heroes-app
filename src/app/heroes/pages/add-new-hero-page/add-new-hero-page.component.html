@@ -3,38 +3,58 @@
   <small>Superman</small>
 </h1>
 <mat-divider></mat-divider>
-<div>
-  <div>
+<div class="añadir">
+  <div class="añadir__container">
     <mat-card>
-      <mat-card-content>
-        <div>
+      <mat-card-content class="añadir__container--subcontainer">
+        <form class="añadir__form" [formGroup]="heroForm" (ngSubmit)="onSubmit()">
+          <div class="añadir__form--fields">
+            <mat-form-field>
+              <mat-label>Súper héroe</mat-label>
+              <input type="text" matInput required="" formControlName="superhero"/>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Alter ego</mat-label>
+              <input type="text" matInput required="" formControlName="alter_ego"/>
+            </mat-form-field>
+          </div>
           <mat-form-field>
-            <mat-label>Súper héroe</mat-label>
-            <input type="text" matInput required="" />
+            <mat-label>Primera aparición</mat-label>
+            <input type="text" matInput required=""  formControlName="first_appearance"/>
           </mat-form-field>
           <mat-form-field>
-            <mat-label>Alter ego</mat-label>
-            <input type="text" matInput required="" />
+            <mat-label>Personajes</mat-label>
+            <input type="text" matInput required="" formControlName="characters" />
           </mat-form-field>
+          <mat-form-field>
+            <mat-label>Creador</mat-label>
+            <mat-select required="" formControlName="publisher">
+              <mat-option *ngFor="let p of publishers" [value]="p.id">{{
+                p.desc
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Alternative Image</mat-label>
+            <input type="text" matInput required="" formControlName="alt_img"/>
+          </mat-form-field>
+        </form>
+        <div class="añadir__btns--container">
+          <button mat-flat-button color="warn">Borrar</button>
+        <button mat-flat-button color="primary" (click)="onSubmit()">
+          <mat-icon>save</mat-icon> Guardar
+        </button>
         </div>
-        <mat-form-field>
-          <mat-label>Primera aparición</mat-label>
-          <input type="text" matInput required="" />
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Personajes</mat-label>
-          <input type="text" matInput required="" />
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Creador</mat-label>
-          <mat-select required="">
-            <mat-option *ngFor="let p of publishers" [value]="p.id">{{
-              p.desc
-            }}</mat-option>
-          </mat-select>
-        </mat-form-field>
       </mat-card-content>
     </mat-card>
   </div>
-  <div></div>
+  <div class="añadir__subcontainer">
+    <mat-card>
+      <img [src]="currentHero | heroImage" alt="imagen del heroe" mat-card-image />
+    </mat-card>
+  </div>
 </div>
+<pre>
+  {{currentHero | json}}
+
+</pre>
