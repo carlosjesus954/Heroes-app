@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from 'src/app/auth/interfaces/user.interface';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-layout-page',
@@ -6,6 +9,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./layout-page.component.scss']
 })
 export class LayoutPageComponent {
+  constructor(private authService : AuthService, private router : Router){}
   public siderbarItems = [
     {
       label: 'Listado',
@@ -23,4 +27,11 @@ export class LayoutPageComponent {
       url: './search'
     }
   ]
+  get user() : User | undefined{
+    return this.authService.currentUser
+  }
+  public onLogout(){
+    this.authService.logout()
+    this.router.navigate(['/auth'])
+  }
 }
